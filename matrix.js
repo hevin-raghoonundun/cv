@@ -30,6 +30,7 @@
   var last = 0;
   function draw(now) {
     requestAnimationFrame(draw);
+    if (document.hidden) return; // pause when tab is not visible
     if (now - last < 60) return; // ~16fps, classic rain cadence
     last = now;
 

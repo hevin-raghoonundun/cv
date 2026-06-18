@@ -169,6 +169,8 @@ img { max-width: 100%; }
 }
 .nav-links a:hover { color: var(--text); }
 .nav-links a:hover::after { width: 100%; }
+.nav-links a.active { color: var(--text); }
+.nav-links a.active::after { width: 100%; }
 
 /* ---------- Layout helpers ---------- */
 main { width: 100%; }
@@ -677,9 +679,53 @@ main { width: 100%; }
 }
 .footer-mono { color: var(--green); }
 
+/* back-to-top button */
+.to-top {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--magenta), var(--violet));
+  color: #fff;
+  font-size: 1.25rem;
+  text-decoration: none;
+  box-shadow: 0 6px 24px rgba(255, 43, 214, 0.45);
+  z-index: 90;
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+}
+.js .to-top {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+}
+.js .to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+.to-top:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(255, 43, 214, 0.6);
+}
+
 /* ---------- Entrance animations ---------- */
-.section, .hero-text, .code-window {
+.hero-text, .code-window {
   animation: rise 0.7s ease both;
+}
+
+/* scroll-reveal for content sections (progressive enhancement) */
+.js .section {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.js .section.in-view {
+  opacity: 1;
+  transform: none;
 }
 .hero-text { animation-delay: 0.05s; }
 .code-window { animation-delay: 0.18s; }
@@ -716,4 +762,5 @@ main { width: 100%; }
     transition-duration: 0.001ms !important;
   }
   .bg-glow { animation: none; }
+  .js .section { opacity: 1 !important; transform: none !important; }
 }
