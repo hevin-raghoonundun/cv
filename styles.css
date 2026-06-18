@@ -73,12 +73,17 @@ img { max-width: 100%; }
 /* ---------- Animated background ---------- */
 .bg-grid,
 .bg-glow,
-.scanlines {
+.scanlines,
+.matrix-bg {
   position: fixed;
   inset: 0;
-  z-index: -2;
   pointer-events: none;
 }
+.bg-grid { z-index: -4; }
+.scanlines { z-index: -1; }
+
+/* Matrix-style falling green code (drawn by matrix.js) */
+.matrix-bg { z-index: -2; opacity: 0.42; }
 
 .bg-grid {
   background-image:
@@ -90,7 +95,7 @@ img { max-width: 100%; }
 }
 
 .bg-glow {
-  z-index: -1;
+  z-index: -3;
   background:
     radial-gradient(40% 35% at 12% 8%, rgba(255, 43, 214, 0.20), transparent 70%),
     radial-gradient(45% 40% at 88% 18%, rgba(0, 240, 255, 0.16), transparent 72%),
@@ -211,6 +216,42 @@ main { width: 100%; }
 /* allow grid columns to size by fr (not by the long name's min-content) */
 .hero-text,
 .code-window { min-width: 0; }
+
+/* profile avatar with rotating neon ring */
+.avatar {
+  position: relative;
+  width: 128px;
+  height: 128px;
+  margin-bottom: 22px;
+  display: grid;
+  place-items: center;
+}
+.avatar::before {
+  content: "";
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, var(--cyan), var(--magenta), var(--violet), var(--cyan));
+  animation: spin 6s linear infinite;
+}
+.avatar::after {
+  content: "";
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  box-shadow: 0 0 26px rgba(255, 43, 214, 0.5), 0 0 48px rgba(0, 240, 255, 0.3);
+  pointer-events: none;
+}
+.avatar img {
+  position: relative;
+  z-index: 1;
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--bg);
+}
+@keyframes spin { to { transform: rotate(360deg); } }
 
 .hero-name {
   font-family: var(--font-display);

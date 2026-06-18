@@ -11,6 +11,7 @@
   <meta property="og:title" content="Hevin Raghoonundun — Senior Software Engineer" />
   <meta property="og:description" content="Senior Software Engineer — cloud-native microservices, observability, .NET &amp; Blazor." />
   <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://hevin-raghoonundun.github.io/cv/profile.jpg" />
 
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -25,6 +26,7 @@
   <div class="bg-grid" aria-hidden="true"></div>
   <div class="bg-glow" aria-hidden="true"></div>
   <div class="scanlines" aria-hidden="true"></div>
+  <canvas id="matrix" class="matrix-bg" aria-hidden="true"></canvas>
 
   <!-- Navigation -->
   <header class="nav">
@@ -45,6 +47,9 @@
     <!-- Hero -->
     <section class="hero" id="top">
       <div class="hero-text">
+        <div class="avatar">
+          <img src="profile.jpg" alt="Portrait of Hevin Raghoonundun" width="128" height="128" />
+        </div>
         <p class="eyebrow">// senior software engineer</p>
         <h1 class="hero-name" data-text="Hevin Raghoonundun">Hevin Raghoonundun</h1>
         <p class="hero-role">
@@ -165,11 +170,26 @@
           </ul>
         </article>
         <article class="skill-card">
-          <h3 class="skill-head">Backend &amp; Cloud-Native</h3>
+          <h3 class="skill-head">Backend &amp; APIs</h3>
           <ul class="chips">
-            <li>.NET</li><li>Blazor</li><li>Microservices</li>
-            <li>Clean Architecture</li><li>RabbitMQ</li><li>Kubernetes</li>
-            <li>OpenTelemetry</li>
+            <li>.NET</li><li>ASP.NET Core</li><li>Blazor</li>
+            <li>REST / Web API</li><li>gRPC</li><li>Microservices</li>
+            <li>Clean Architecture</li><li>CQRS + MediatR</li><li>RabbitMQ</li>
+          </ul>
+        </article>
+        <article class="skill-card">
+          <h3 class="skill-head">Databases &amp; Data</h3>
+          <ul class="chips">
+            <li>SQL Server</li><li>PostgreSQL</li>
+            <li>Entity Framework Core</li><li>Dapper</li>
+          </ul>
+        </article>
+        <article class="skill-card">
+          <h3 class="skill-head">DevOps &amp; Observability</h3>
+          <ul class="chips">
+            <li>Docker</li><li>Kubernetes</li><li>GitHub Actions</li>
+            <li>OpenTelemetry</li><li>Grafana</li><li>Prometheus</li>
+            <li>xUnit</li>
           </ul>
         </article>
         <article class="skill-card">
@@ -202,6 +222,7 @@
               <li>Clean Architecture</li>
               <li>Microservices</li>
               <li>RabbitMQ</li>
+              <li>PostgreSQL</li>
               <li>Kubernetes</li>
               <li>GTM</li>
             </ul>
@@ -220,6 +241,7 @@
               <li>Blazor</li>
               <li>.NET</li>
               <li>C#</li>
+              <li>SQL Server</li>
             </ul>
           </div>
         </article>
@@ -405,9 +427,10 @@
 
   <footer class="footer">
     <p>
-      <span class="footer-mono">$</span> built with native HTML &amp; CSS ·
-      © <span id="year">2026</span> Hevin Raghoonundun
+      <span class="footer-mono">$</span> © <span id="year">2026</span> Hevin Raghoonundun · Mauritius
     </p>
   </footer>
+
+  <script defer src="matrix.js"></script>
 </body>
 </html>
